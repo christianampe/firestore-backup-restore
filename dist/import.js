@@ -21,5 +21,5 @@ else{console.log('Please check your date parameters!!!',date);parameterValid=fal
 else{console.error("The package doesn't support more than two levels: "+date);}});}
 if(typeof geoArray!=='undefined'&&geoArray.length>0){geoArray.forEach(function(geo){if(data.hasOwnProperty(geo)){data[geo]=new admin.firestore.GeoPoint(data[geo]._latitude,data[geo]._longitude);}
 else{console.log('Please check your geo parameters!!!',geoArray);parameterValid=false;}});}
-if(parameterValid){return new Promise(function(resolve){db.collection(collectionName).doc(doc).set(data).then(function(){console.log(doc+" was successfully added to firestore!");resolve('Data written!');}).catch(function(error){console.log(error);});});}
+if(parameterValid){return new Promise(function(resolve){db.collection(collectionName).doc().set(data).then(function(){console.log(doc+" was successfully added to firestore!");resolve('Data written!');}).catch(function(error){console.log(error);});});}
 else{console.log(doc+" was not imported to firestore. Please check your parameters or ignore if you don't need to import the property above.");return false;}};
