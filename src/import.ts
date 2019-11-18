@@ -148,7 +148,7 @@ const startUpdating = (db, collectionName: string, doc: string, data: object, da
 
   if (parameterValid) {
     return new Promise(resolve => {
-      db.collection(collectionName).doc(doc)
+      db.collection(collectionName).doc()
         .set(data)
         .then(() => {
           console.log(`${doc} was successfully added to firestore!`);
